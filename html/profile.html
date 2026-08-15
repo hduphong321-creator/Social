@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Trang cá nhân</title>
+
+    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/profile.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+
+        <div class="logo">
+            🎓 Phong Social
+        </div>
+
+        <div class="search-box">
+            <input type="text" placeholder="Tìm confession...">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+
+        <div class="nav-icon">
+            <img id="nav-avatar" src="https://i.pravatar.cc/100">
+        </div>
+
+    </nav>
+
+    <div class="container">
+
+        <!-- LEFT -->
+        <aside class="left">
+
+            <div class="menu">
+
+                <a href="./home.html" id="home-btn">
+                    <i class="fa-solid fa-house"></i>
+                    Trang chủ
+                </a>
+
+                <a href="#" id="favorite-btn">
+                    <i class="fa-solid fa-heart"></i>
+                    Yêu thích
+                </a>
+
+                <a href="#" id="hot-btn">
+                    <i class="fa-solid fa-fire"></i>
+                    Hot
+                </a>
+
+                <a href="#" id="logout-btn">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    Đăng xuất
+                </a>
+
+            </div>
+
+        </aside>
+
+        <!-- MAIN -->
+        <main>
+
+            <!-- PROFILE -->
+            <div class="profile-card">
+
+                <div class="profile-avatar-box">
+
+    <img
+        id="avatar"
+        class="profile-avatar"
+        src="https://i.pravatar.cc/200"
+    >
+
+    <label for="avatar-input" class="change-avatar">
+        <i class="fa-solid fa-camera"></i>
+    </label>
+
+    <input
+        type="file"
+        id="avatar-input"
+        accept="image/*"
+        hidden
+    >
+
+</div>
+
+                <h2 id="username">...</h2>
+
+                <p id="email"></p>
+
+                <div class="stat">
+
+                    <div>
+
+                        <h3 id="total-post">0</h3>
+
+                        <span>Bài đăng</span>
+
+                    </div>
+
+                    <div>
+
+                        <h3 id="total-like">0</h3>
+
+                        <span>Lượt thích</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- POSTS -->
+            <div class="my-post">
+
+                <h2>Bài viết của bạn</h2>
+
+                <!-- profile.js render card ở đây -->
+                <div id="post-list"></div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <!-- Modal sửa bài viết (giống Home) -->
+    <div class="modal" id="edit-modal">
+
+        <div class="edit-content">
+
+            <div class="modal-header">
+
+                <h2>Chỉnh sửa bài viết</h2>
+
+                <span id="close-edit">&times;</span>
+
+            </div>
+
+            <textarea id="edit-content"></textarea>
+
+            <input
+                type="text"
+                id="edit-hashtag"
+                placeholder="Hashtag">
+
+            <button id="save-edit">
+                Lưu thay đổi
+            </button>
+
+        </div>
+
+    </div>
+    <div id="img-modal" class="img-modal">
+
+        <span id="close-img">&times;</span>
+
+        <img id="img-view">
+
+    </div>
+
+    <script type="module" src="../profile.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>School Confession</title>
+    <link rel="stylesheet" href="../css/home.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav>
+      <div class="logo">🎓 Phong Social</div>
+
+      <div class="search-box">
+        <input type="text" id="search" placeholder="Tìm confession..." />
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </div>
+
+      <div class="nav-icon">
+
+    <div id="role-badge" class="role-badge" style="display:none;">
+        <i id="role-icon" class="fa-solid fa-crown"></i>
+        <span id="role-name"></span>
+    </div>
+
+    <img id="profile-btn" src="" alt="avatar">
+
+</div>
+    </nav>
+
+    <div class="container">
+      <!-- LEFT -->
+      <aside class="left">
+        <div class="menu">
+          <a href="#" id="home-btn" class="active">
+            <i class="fa-solid fa-house"></i>
+            Trang chủ
+          </a>
+          <a href="#" id="approve-btn">
+    <i class="fa-solid fa-circle-check"></i>
+    <span>Duyệt bài</span>
+</a>
+          <a href="#" id="favorite-btn">
+            <i class="fa-solid fa-heart"></i>
+            Yêu thích
+          </a>
+
+          <a href="#" id="hot-btn">
+            <i class="fa-solid fa-fire"></i>
+            Hot
+          </a>
+
+          <a href="#" id="logout-btn">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Đăng xuất
+          </a>
+        </div>
+      </aside>
+
+      <!-- MAIN -->
+      <main>
+        <div class="post-trigger" id="open-post">💭 Bạn đang nghĩ gì?</div>
+
+        <!-- Popup đăng bài -->
+        <div class="modal" id="post-modal">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2>Đăng Confession</h2>
+
+              <span id="close-post">&times;</span>
+            </div>
+
+            <form id="post-form">
+              <textarea
+                id="content"
+                placeholder="Chia sẻ câu chuyện của bạn..."
+              ></textarea>
+
+              <!-- Ảnh+ Video+ẩn danh -->
+              <input
+    type="file"
+    id="image"
+    accept="image/*,video/*"
+    hidden
+/>
+
+<label for="image" class="upload-btn">
+    <i class="fa-solid fa-photo-film"></i>
+    Chọn ảnh / video
+</label>
+
+              <div class="preview-box">
+
+    <img
+        id="preview"
+        style="display:none"
+    >
+
+    <video
+        id="video-preview"
+        controls
+        style="display:none"
+    ></video>
+
+</div>
+
+              <!-- Hashtag -->
+              <input
+                type="text"
+                id="hashtag"
+                placeholder="Hashtag (VD: #Crush #Java)"
+              />
+              <div class="anonymous-box">
+
+    <label>
+
+        <input
+            type="checkbox"
+            id="anonymous"
+        >
+
+        Đăng ẩn danh
+
+    </label>
+
+</div>
+
+              <div class="modal-footer">
+                <button type="submit">Đăng bài</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="modal" id="edit-modal">
+
+    <div class="edit-content">
+
+        <div class="modal-header">
+            <h2>Chỉnh sửa bài viết</h2>
+            <span id="close-edit">&times;</span>
+        </div>
+
+        <textarea id="edit-content"></textarea>
+
+        <input
+            type="text"
+            id="edit-hashtag"
+            placeholder="Hashtag"
+        >
+
+        <button type="button" id="save-edit">
+    Lưu thay đổi
+</button>
+
+    </div>
+
+</div>
+        <!-- Danh sách bài viết -->
+        <div id="post-list"></div>
+      </main>
+
+      <!-- RIGHT -->
+      <aside class="right">
+        <div class="box">
+          <h3>🔥 Trending</h3>
+
+          <ul id="trending-list"></ul>
+        </div>
+      </aside>
+    </div>
+    <div id="img-modal" class="img-modal">
+        <span id="close-img">&times;</span>
+        <img id="img-view">
+    </div>
+    <script type="module" src="../home.js"></script>
+  </body>
+</html>

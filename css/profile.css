@@ -1,0 +1,100 @@
+.profile-card{
+    background:#fff;
+    border-radius:15px;
+    padding:30px;
+    text-align:center;
+    margin-bottom:25px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.profile-avatar{
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    object-fit:cover;
+    border:6px solid #2563eb;
+}
+
+.profile-card h2{
+    margin-top:15px;
+    font-size:30px;
+}
+
+.profile-card p{
+    margin-top:5px;
+    color:#777;
+}
+
+.stat{
+    display:flex;
+    justify-content:center;
+    gap:80px;
+    margin-top:25px;
+}
+
+.stat h3{
+    color:#2563EB;
+    font-size:32px;
+}
+
+.my-post h2{
+    margin-bottom:20px;
+}
+.card .top img{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    object-fit:cover;
+}
+/* ================= AVATAR ================= */
+
+.profile-avatar-box{
+    position:relative;
+    width:150px;
+    height:150px;
+    margin:0 auto;
+}
+
+.profile-avatar{
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    object-fit:cover;
+    border:6px solid #2563eb;
+    display:block;
+}
+
+/* nút camera */
+
+.change-avatar{
+    position:absolute;
+    right:2px;
+    bottom:2px;
+
+    width:42px;
+    height:42px;
+
+    border-radius:50%;
+
+    background:#2563eb;
+    color:white;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    cursor:pointer;
+
+    border:4px solid white;
+
+    transition:.25s;
+}
+
+.change-avatar:hover{
+    transform:scale(1.1);
+    background:#1d4ed8;
+}
+
+.change-avatar i{
+    font-size:17px;
+}
