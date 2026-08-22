@@ -1125,63 +1125,73 @@ async function loadComments(postId) {
 
     const q = query(
         collection(db, "comments"),
-        where(
-            "postId",
-            "==",
-            postId
-        )
+        where("postId", "==", postId)
     );
 
-
-    const snap =
-        await getDocs(q);
-
+    const snap = await getDocs(q);
 
     let html = "";
 
-
-    snap.forEach((d) => {
+    for (const d of snap.docs) {
 
         const c = d.data();
 
+        let avatar = "https://i.pravatar.cc/60";
+        let username = c.username || "Người dùng";
+
+        // Có uid thì lấy thông tin đúng người đó
+        if (c.uid) {
+            try {
+                const userAvatar = await getUserAvatar(c.uid);
+
+                if (userAvatar) {
+                    avatar = userAvatar;
+                }
+            }
+            catch (err) {
+                console.log("Lỗi lấy avatar:", err);
+            }
+        }
 
         html += `
-            <div class="comment">
+    <div class="comment">
 
-                <div class="comment-top">
+        <div class="comment-user">
 
-                    <b>
-                        ${c.username}
-                    </b>
+            <img
+                src="${avatar}"
+                class="comment-avatar"
+            >
 
-                    ${
-                        auth.currentUser?.uid === c.uid
-                            ? `
-                                <button
-                                    class="delete-comment"
-                                    onclick="deleteComment(
-                                        '${d.id}',
-                                        '${postId}'
-                                    )"
-                                >
-                                    <i
-                                        class="fa-solid fa-trash"
-                                    ></i>
-                                </button>
-                            `
-                            : ""
-                    }
+            <b>
+                ${username}
+            </b>
 
-                </div>
+            <span class="comment-content">
+                ${c.content || ""}
+            </span>
 
-                <p>
-                    ${c.content}
-                </p>
+            ${
+                auth.currentUser?.uid === c.uid
+                    ? `
+                        <button
+                            class="delete-comment"
+                            onclick="deleteComment(
+                                '${d.id}',
+                                '${postId}'
+                            )"
+                        >
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    `
+                    : ""
+            }
 
-            </div>
-        `;
-    });
+        </div>
 
+    </div>
+`;
+    }
 
     return html;
 }
@@ -1784,9 +1794,7 @@ async function loadPendingPosts() {
         alert("Không thể tải bài chờ duyệt");
     }
 }
-// =====================================================
 // DUYỆT BÀI
-// =====================================================
 
 approveBtn.addEventListener("click", async (e) => {
 
@@ -1994,11 +2002,7 @@ hotBtn.addEventListener(
         loadHotPosts();
     }
 );
-
-
-// =====================================================
-// FAVORITE
-// =====================================================
+// Favorite
 
 favoriteBtn.addEventListener(
     "click",
