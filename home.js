@@ -1137,60 +1137,57 @@ async function loadComments(postId) {
         const c = d.data();
 
         let avatar = "https://i.pravatar.cc/60";
-        let username = c.username || "Người dùng";
 
-        // Có uid thì lấy thông tin đúng người đó
         if (c.uid) {
             try {
-                const userAvatar = await getUserAvatar(c.uid);
-
-                if (userAvatar) {
-                    avatar = userAvatar;
-                }
+                avatar = await getUserAvatar(c.uid);
             }
             catch (err) {
-                console.log("Lỗi lấy avatar:", err);
+                console.log(err);
             }
         }
 
+        const username = c.username || "Người dùng";
+
         html += `
-    <div class="comment">
+            <div class="comment">
 
-        <div class="comment-user">
+                <div class="comment-user">
 
-            <img
-                src="${avatar}"
-                class="comment-avatar"
-            >
+                    <img
+                        src="${avatar}"
+                        class="comment-avatar"
+                    >
 
-            <b>
-                ${username}
-            </b>
+                    <div class="comment-info">
 
-            <span class="comment-content">
-                ${c.content || ""}
-            </span>
+                        <b>
+                            ${username}
+                        </b>
 
-            ${
-                auth.currentUser?.uid === c.uid
-                    ? `
-                        <button
-                            class="delete-comment"
-                            onclick="deleteComment(
-                                '${d.id}',
-                                '${postId}'
-                            )"
-                        >
-                            <i class="fa-solid fa-trash"></i>
-                        </button>
-                    `
-                    : ""
-            }
+                        <span class="comment-content">
+                            ${c.content || ""}
+                        </span>
 
-        </div>
+                    </div>
 
-    </div>
-`;
+                    ${
+                        auth.currentUser?.uid === c.uid
+                        ? `
+                            <button
+                                class="delete-comment"
+                                onclick="deleteComment('${d.id}', '${postId}')"
+                            >
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        `
+                        : ""
+                    }
+
+                </div>
+
+            </div>
+        `;
     }
 
     return html;
